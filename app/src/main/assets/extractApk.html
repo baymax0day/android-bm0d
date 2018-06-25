@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./mobile/jqm.css">
+    <script src="./mobile/jq1.9.1.js" type="text/javascript"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>-->
+    <script src="./mobile/jqm.js"></script>
+    <link rel="stylesheet" href="./mobile/index.css">
+
+    <script>
+        $(document).ready(function () {
+
+             apkList = JSON.parse(toolFunc.apkJson())
+             apkSystem = JSON.parse(toolFunc.apkSystem())
+            for (var i in apkList) {
+                $(".apk").append('<label class="demo--label"><input class="demo--radio" value="'+apkList[i].packagename+ '+'+apkList[i].path +'" type="checkbox" name="classname"><span class="demo--checkbox demo--radioInput"></span><p>' + apkList[i].name + '</p></label>')
+            }
+            for (var i in apkSystem) {
+                $(".apkSystem").append('<label class="demo--label"><input class="demo--radio" value="'+apkSystem[i].packagename+'" type="checkbox" name="classname"><span class="demo--checkbox demo--radioInput"></span><p>' + apkSystem[i].name + '</p></label>')
+            }
+            
+            $("#del").click(function(){
+                console.log("删除======")
+                var delArr = [];
+                var arrChk=$("input[name='classname']:checked");
+                arrChk.each(function(i){
+                    var jo = {}
+                    jo["packagename"] =$(this).val().split('+')[0];
+                    delArr[i] = jo;
+                })
+                var str = JSON.stringify(delArr)
+                //toolFunc.makeToast("正在卸载，请稍后...")
+                toolFunc.apkDel(str)
+            })
+            $("#backup").click(function(){
+                console.log("备份======")
+                var arrChk=$("input[name='classname']:checked");
+                arrChk.each(function(i){
+                    var path = $(this).val().split('+')[1];
+                    var apkname =$($(this).next()).next().html();
+                    if(toolFunc.apkBackup(apkname,path)){
+                        console.log("备份成功=====");
+                        alert("/mnt/sdcard/BM0D/ExportApk/")
+                    }
+                })
+            })
+        })
+    </script>
+    <style>
+        p{
+            margin: 0;
+        }
+        .toolhead>p {
+            font-size: 2.0em;
+            font-weight: 500;
+            margin: 15px 0px;
+        }
+        .apkSystem{
+            width: 100%;
+            /* margin: 0px 20px; */
+            padding: 0px;
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        .apkSystem .demo--label {
+            margin: 1px;
+            height: 3em;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .apk {
+            width: 100%;
+            /* margin: 0px 20px; */
+            padding: 0px;
+            list-style: none;
+        }
+       
+
+
+
+        .demo--radio {
+            display: none
+        }
+
+        .apk .demo--label {
+            margin: 1px;
+            height: 3em;
+            background-color: white;
+           
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .demo--radioInput {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 100%;
+            display: inline-block;
+            height: 16px;
+            margin-right: 10px;
+            margin-top: -1px;
+            vertical-align: middle;
+            width: 16px;
+            line-height: 1
+        }
+
+        .demo--label p {
+            width: 80%;
+            font-weight: 100;
+            font-size: 0.9em !important;
+            line-height: 3em;
+        }
+
+        .demo--radio:checked+.demo--radioInput:after {
+            background-color: #57ad68;
+            border-radius: 100%;
+            content: "";
+            display: inline-block;
+            height: 12px;
+            margin: 2px;
+            width: 12px
+        }
+
+        .demo--checkbox.demo--radioInput,
+        .demo--radio:checked+.demo--checkbox.demo--radioInput:after {
+            border-radius: 0
+        }
+
+        .funcBtn{
+            width: 94%;
+            margin: 0px auto;
+            display: flex;
+            justify-content: flex-end;
+            position: fixed;
+            bottom: 10px;
+        }
+        .funcBtn label{
+            margin: 0px 8px;
+            text-align: center;
+            line-height: 30px;
+            /* border-radius: 3px; */
+            border-right: 1px gray solid;
+            border-bottom: 1px gray solid;
+            color: white;
+            height: 30px;;
+            width: 90px;
+            font-size: 13px;
+            background-color: 	#BFEFFF;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div data-role="page" id="pageone">
+        <div class="header">
+            <h1>Baymax0day</h1>
+            <p>生而为人,我很抱歉</p>
+            <div class="imgHeader">
+                <img src="./img/baymax.jpg">
+            </div>
+            <div class="func">
+                <img src="./img/more.png" alt="">
+                <img src="./img/search.png" alt="">
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <div class="toolhead">
+                <p>用户应用>></p>
+            </div>
+            <div class="apk">
+
+            </div>
+            <div class="toolhead">
+                <p>系统应用>></p>
+            </div>
+            <div class="apkSystem">
+
+            </div>
+
+            <div class="funcBtn">
+                <label id="del">卸载</label>
+                <label id="backup">备份</label>
+            </div>
+
+            <div class="footer">
+                <p>邮箱:baymax0day@gamil.com</p>
+            </div>
+
+        </div>
+
+
+</body>
+
+</html>

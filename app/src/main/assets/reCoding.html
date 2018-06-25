@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./mobile/jqm.css">
+    <script src="./mobile/jq1.9.1.js" type="text/javascript"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>-->
+    <script src="./mobile/jqm.js"></script>
+    <link rel="stylesheet" href="./mobile/index.css">
+
+    <style>
+        .select span {
+            font-size: 1.0em;
+            font-weight: 100;
+        }
+        .readyCode{
+            margin: 1.3em auto;
+        }
+        .readyCode>textarea{
+            height: 20em !important;
+            font-size: 1.4em !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var id = 0;
+            $("#selectVal").change(function () {
+                id = $("#selectVal option:selected").val()
+            })
+
+            $("#submit").click(function () {
+                console.log()
+                var code = $(".readyCode>textarea").val()
+                var res = toolFunc.reCoding(parseInt(id),code)
+                $(".readyCode>textarea").val(res);
+            })
+
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <div data-role="page" id="pageone">
+        <div class="header">
+            <h1>Baymax0day</h1>
+            <p>生而为人,我很抱歉</p>
+            <div class="imgHeader">
+                <img src="./img/baymax.jpg">
+            </div>
+            <div class="func">
+                <img src="./img/more.png" alt="">
+                <img src="./img/search.png" alt="">
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <div class="select">
+                <select id="selectVal">
+                    <option value="0">请选择</option>
+                    <option value="1">UTF8==>UNICODE</option>
+                    <option value="2">UNICODE==>UTF8</option>
+                    <option value="3">HEX(DECIMAL)==>CHAR</option>
+                    <option value="4">CHAR==>HEX(DECIMAL)</option>
+                    <option value="5">Base64编码</option>
+                    <option value="6">Base64解码</option>
+                    <option value="7">Rc4加密</option>
+                    <option value="8">Rc4解密</option>
+                    <option value="9">摩斯电码</option>
+                    <option value="10">MD5加密</option>
+                </select>
+            </div>
+
+            <div class="readyCode">
+                <textarea placeholder="粘贴要转换的字符串" style="height: 80em;"></textarea>
+            </div>
+            <div>
+                
+            </div>
+            <div>
+                <button id="submit">提交</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>邮箱:baymax0day@gamil.com</p>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

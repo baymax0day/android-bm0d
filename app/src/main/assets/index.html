@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./mobile/jqm.css">
+    <script src="./mobile/jq1.9.1.js" type="text/javascript"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>-->
+    <script src="./mobile/jqm.js"></script>
+    <link rel="stylesheet" href="./mobile/index.css">
+
+
+    <script>
+        $(document).ready(function () {
+            $(".self>button:nth-child(1)").click(function(){
+                // toolFunc.makeToast("跳转到应用提取apk")
+                window.location.href="./extractApk.html"
+            })
+            $(".self>button:nth-child(2)").click(function(){
+                window.location.href="./reCoding.html"
+            })
+            $(".self>button:nth-child(3)").click(function(){
+                var res = toolFunc.wifiPass()
+                toolFunc.makeToast(res)
+            })
+            $(".self>button:nth-child(7)").click(function(){
+                window.location.href = "./phoneinfo.html"
+            })
+
+            $(".cloud>button:nth-child(1)").click(function(){
+                window.location.href = "./baidufanyi.html"
+            })
+            $(".cloud>button:nth-child(2)").click(function(){
+                window.location.href = "./email.html"
+            })
+            $(".cloud>button:nth-child(3)").click(function(){
+                window.location.href = "./history.html"
+            })
+            $(".cloud>button:nth-child(4)").click(function(){
+                window.location.href = "./phone.html"
+            })
+            $(".cloud>button:nth-child(5)").click(function(){
+                window.location.href = "./wuliu.html"
+            })
+            $(".cloud>button:nth-child(6)").click(function(){
+                window.location.href = "./baiduimage.html"
+            })
+            
+            $(".hack>button:nth-child(1)").click(function(){
+                // var res = toolFunc.getShortUrl("http://www.baidu.com");
+                // alert(res)
+                window.location.href = "./url.html"
+            })
+
+            $(".hack>button:nth-child(2)").click(function(){
+                toolFunc.sendQQ(50);
+            })
+
+            $(".hack>button:nth-child(4)").click(function(){            
+                toolFunc.alipayDonate()
+            })
+            $(".hack>button:nth-child(5)").click(function(){            
+                toolFunc.wechatScan()
+            })
+            $(".hack>button:nth-child(6)").click(function(){            
+                toolFunc.alipayScan()
+            })
+            $(".footer").click(function(){
+                toolFunc.contactQQ();
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <div data-role="page" id="pageone">
+        <div class="header">
+            <h1>Baymax0day</h1>
+            <p>生而为人,我很抱歉</p>
+            <div class="imgHeader">
+                <img src="./img/baymax.jpg">
+            </div>
+            <div class="func">
+                <img src="./img/more.png" alt="">
+                <img src="./img/search.png" alt="">
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <div class="toolhead">
+                <p>个人应用>></p>
+            </div>
+            
+            <section class="tool self">
+                <button>应用管理</button>
+                <button>编码解码</button>
+                <button>WiFi密码查看</button>
+                <button>网页下载</button>
+                <button>发送网络封包</button>
+                <button>whois查询</button>
+                <button>获取设备信息</button>
+                <button>获取当前壁纸</button>
+                <button>xp模块</button>
+                <p class="empty"></p>
+            </section>
+
+
+            <div class="toolhead">
+                <p>云端应用>></p>
+            </div>
+            <section class="tool cloud">
+                <button>百度翻译</button>
+                <button>邮编查询</button>
+                <button>历史上的今天</button>
+                <button>归属地查询</button>
+                <button>物流查询</button>
+                <button>以图搜图</button>
+                <button>B站封面</button>
+                <p class="empty"></p>
+            </section>
+
+            <div class="toolhead">
+                <p>其他工具>></p>
+            </div>
+            <section class="tool hack">
+                <button>短网址生成</button>
+                <button>qq刷屏</button>
+                <button>社工库</button>
+                <button>支付宝捐赠</button>
+                <button>微信扫一扫</button>
+                <button>支付宝扫一扫</button>
+                <button>圖片生成文字码</button>
+                <p class="empty"></p>
+            </section>
+
+            <div class="toolhead">
+                <p>开发中>></p>
+            </div>
+            <section class="tool future">
+                <button>可连网段扫描</button>
+                <button>注入工具</button>
+                <button>服务器管理</button>
+                <button>扫描工具</button>
+                <!--<p class="empty"></p>-->
+            </section>
+        </div>
+
+        <div class="footer">
+            <p>邮箱:baymax0day@gamil.com</p>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./mobile/jqm.css">
+    <script src="./mobile/jq1.9.1.js" type="text/javascript"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.js"></script>-->
+    <script src="./mobile/jqm.js"></script>
+    <link rel="stylesheet" href="./mobile/index.css">
+
+    <style>
+        .iframe{
+            width: 100%;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var height = $(window).height()
+            console.log(height)
+           $(".iframe").css({"height":height*0.78+"px"})
+        })
+    </script>
+</head>
+
+<body>
+
+    <div data-role="page" id="pageone">
+        <div class="header">
+            <h1>Baymax0day</h1>
+            <p>生而为人,我很抱歉</p>
+            <div class="imgHeader">
+                <img src="./img/baymax.jpg">
+            </div>
+            <div class="func">
+                <img src="./img/more.png" alt="">
+                <img src="./img/search.png" alt="">
+            </div>
+        </div>
+        <iframe src="http://image.baidu.com/" class="iframe">
+        </iframe>
+
+        <div class="footer">
+            <p>邮箱:baymax0day@gamil.com</p>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
